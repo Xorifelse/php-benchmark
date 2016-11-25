@@ -55,17 +55,20 @@ Array(
       [time] => 0.5495378971
       [atime] => 0.0000002748
       [speed] => 40.46 %
-    ) [1] => Array(
+    ) 
+    [1] => Array(
       [name] => strstr
       [time] => 0.7357819080
       [atime] => 0.0000003679
       [speed] => 20.28 %
-    ) [2] => Array(
+    ) 
+    [2] => Array(
       [name] => mystripos
       [time] => 0.8365163803
       [atime] => 0.0000004183
       [speed] => 9.37 %
-    ) [3] => Array(
+    ) 
+    [3] => Array(
       [name] => stristr
       [time] => 0.9229984283
       [atime] => 0.0000004615
