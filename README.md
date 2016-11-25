@@ -4,8 +4,8 @@ Sometimes when dealing with big data you need to optimize small methods or funct
 
 ## What makes it different?
 This script tests each registered closure before going on to the next iteration meaning it gives each closure the same result while the CPU is waking up or doing something else to give less "jumping" results.
-
-### How to initialize?
+## Using the code
+### 1. Initilize the object
 If no parameters are submitted, both default to `1`.
 ```
 $outer = 1000000; // Repeat # times
@@ -13,7 +13,7 @@ $inner = 2        // Use the same closure # in a row.
 
 $bench = new Benchmark($outer, $inner);
 ```
-### Registering closures
+### 2. Registering closures
 ```
 $haystack = 'The quick brown fox jumps over the lazy dog';
 $needle   = 'quick';
@@ -34,13 +34,13 @@ $bench->register('mystrpos', function() use ($haystack, $needle){
   return strpos($haystack, $needle) !== false;
 });
 ```
-### Output
+### 3. Output
 You can print selectively or just print it all:
 ```
 print_r($bench->start(['strstr', 'mystrpos']));
 print_r($bench->start());
 ```
-### Example Output
+Example Output:
 ````
 Array(
   [statistics] => Array(
