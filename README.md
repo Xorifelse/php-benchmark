@@ -1,6 +1,6 @@
 # PHP closure benchmarking
 This is yet another benchmarking script created to compare against multiple closures in PHP.
-Sometimes when dealing with big data you need to optimize to increase performance you can use this to compare different methods to get acurate results.
+Sometimes when dealing with big data you need to optimize small methods or functins to increase performance you can use this to compare the different methods against each other with acurate results.
 
 ## What makes it different?
 This script tests each registered closure before going on to the next iteration meaning it gives each closure the same result while the CPU is waking up or doing something else to give less "jumping" results.
