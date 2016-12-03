@@ -30,7 +30,7 @@
       return ['statistics' => $stats, 'results' => $results];
     }
 
-    public function register(string $name, closure $callback){
+    public function register(string $name, \closure $callback){
       if(!isset($this->function[$name])){
         $this->function[$name] = $callback;
         $this->duration[$name] = 0;
