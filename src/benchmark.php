@@ -6,7 +6,7 @@
       private $inner;
       private $function;
       private $duration;
-      private $bind;
+      private $args;
 
       private function getResults(){
         asort($this->duration);
@@ -33,11 +33,11 @@
         return ['stats' => $stats, 'results' => $results];
       }
 
-      public function register(string $name, \closure $callback, $bind = null){
+      public function register(string $name, \closure $callback, ...$args){
         if(!isset($this->function[$name])){
           $this->function[$name] = is_object($bind) ? \Closure::bind($callback, $bind) : $callback;
           $this->duration[$name] = 0;
-          $this->bind[$name] = $bind;
+          $this->args[$name] = $args;
         } else {
           trigger_error("Function '$name' is already added");
         }
@@ -66,7 +66,7 @@
             $s = microtime(true);
 
             for($i = 1; $i <= $this->inner; $i++ ) {
-              $ret = $cb();
+              $ret = $cb(...$this->args[$name]);
             }
 
             $this->duration[$name] += microtime(true) - $s;
