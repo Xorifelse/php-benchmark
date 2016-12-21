@@ -25,9 +25,9 @@
         $stats = [
           'phpversion'  => PHP_VERSION,
           'itterations' => $this->inner * $this->outer * count($results),
-          'duration'    => array_sum(array_column($results, 'time')),
-          'fastest'     => $results[array_search(min(array_column($results, 'time')), array_column($results, 'time'))]['name'],
-          'slowest'     => $results[array_search(max(array_column($results, 'time')), array_column($results, 'time'))]['name'],
+          'duration'    => array_sum($cols = array_column($results, 'time')),
+          'fastest'     => $results[array_search(min($cols), $cols)]['name'],
+          'slowest'     => $results[array_search(max($cols), $cols)]['name']
         ];
 
         return ['stats' => $stats, 'results' => $results];
