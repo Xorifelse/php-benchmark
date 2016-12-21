@@ -34,6 +34,19 @@ $bench->register('mystrpos', function() use ($haystack, $needle){
   return strpos($haystack, $needle) !== false;
 });
 ```
+### 2.1 Closure arguments
+```
+$bench2->register(1, function($haystack, $needle){
+  return strstr($haystack, $needle);
+}, $haystack, $needle);
+```
+### 2.2 Closure binding
+```
+$bench2->register(2, (function($needle){
+  echo strstr($this->haystack, $needle);
+})->bindTo(new MyClass()), $needle);
+```
+
 ### 3. Output
 You can print selectively or just print it all:
 ```
