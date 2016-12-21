@@ -30,10 +30,11 @@
       return ['statistics' => $stats, 'results' => $results];
     }
 
-    public function register(string $name, \closure $callback){
+    public function register(string $name, \closure $callback, $bind = null){
       if(!isset($this->function[$name])){
-        $this->function[$name] = $callback;
+        $this->function[$name] = is_object($bind) ? \Closure::bind($callback, $bind) : $callback;
         $this->duration[$name] = 0;
+        $this->bind[$name] = $bind;
       } else {
         trigger_error("Function '$name' is already added");
       }
